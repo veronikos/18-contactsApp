@@ -1,20 +1,6 @@
-import React from "react";
+import React, {Component} from "react";
 import Person from "./Person";
-
-const array = [
-    {
-        firstName: 'Veronika',
-        lastName:'Kostenko',
-        phone: '+094r7248294',
-        gender: 'female'
-    },
-    {
-        firstName: 'Monika',
-        lastName:'Kostenko',
-        phone: '+094r7248294',
-        gender: 'female'
-    }
-]
+import Search from "./Search";
 
 const contacts = [{
     firstName: "Барней",
@@ -47,12 +33,41 @@ const contacts = [{
     gender: "male"
   }];
 
-function Contacts() {
-  return (
-    <div class="Contacts">
-        {contacts.map(person => <Person {...person} key={person.id}/>)}
-    </div>
-  );
+class Contacts extends Component {
+  
+  state = {
+    searchName: []
+  }
+
+  addSearchName = data => {
+    this.setState({searchName: this.state.searchName.concat(data)}) 
+  }
+
+  // const filtered = contacts
+  // .sort((a, b) => (a.lastName.startsWith("Теод") || a.firstName.startsWith("Теод")) ? -1 : (a.lastName < b.lastName) ? -1 : 1)
+  // console.log(filtered)
+
+  render() {
+
+    const dataFromInput = this.state.searchName[this.state.searchName.length - 1]
+
+    return (
+      <div className="Contacts">
+        <Search addSearchName={this.addSearchName} />
+        {contacts
+          .sort((a, b) =>
+            a.lastName.toLowerCase().startsWith(
+              dataFromInput
+            ) ||
+            a.firstName.toLowerCase().startsWith(
+              dataFromInput
+            ) ? -1 : a.lastName < b.lastName ? -1 : 1)
+          .map((person) => (
+            <Person {...person} key={person.index} />
+          ))}
+      </div>
+    );
+  }
 }
 
 export default Contacts;

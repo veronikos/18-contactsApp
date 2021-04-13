@@ -3,11 +3,11 @@ import React from 'react'
 function Person({firstName, lastName, phone, gender}) {
 
     return (
-        <div class="Person">
-            <p class={gender}>
+        <div className="Person">
+            <p className={gender}>
             </p>
-                <p class="Name">{firstName} {lastName}</p>
-            <div class="phone">{phone}</div>
+                <p className="Name">{firstName} {lastName}</p>
+            <div className="phone">{phone}</div>
         </div>
     );
   }

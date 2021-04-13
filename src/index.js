@@ -3,16 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import './style.css'
 import reportWebVitals from './reportWebVitals';
-import Header from './components/Header';
-import Search from './components/Search'
-import Person from './components/Person'
-import Contacts from "./components/Contacts"
+import App from './App';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <Header />
-    <Search />
-    <Contacts />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

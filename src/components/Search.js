@@ -1,12 +1,38 @@
-import React from 'react'
+import React, { Component } from "react";
 
-function Search() {
+class Search extends Component {
+  state = {
+    searchText: "",
+  };
+
+  changeSearchText = (e) => {
+    this.setState({ searchText: e.target.value });
+  };
+
+  sortContacts = () => {
+    const data = {
+      searchText: this.state.searchText,
+    }
+
+    if(this.state.searchText !== '') {
+      this.props.addSearchName(data.searchText)
+      this.setState({searchText: ''})
+    }
+  }
+
+  render() {
     return (
       <div className="Search">
-        <input type="text" placeholder="Search contacts..." />
-        <button type="submit"></button>
+        <input
+          type="text"
+          placeholder="Search contacts..."
+          value={this.state.searchText}
+          onChange={this.changeSearchText}
+        />
+        <button type="submit" onClick={this.sortContacts}></button>
       </div>
     );
   }
-  
-  export default Search;
+}
+
+export default Search;
