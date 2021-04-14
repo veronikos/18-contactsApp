@@ -5,8 +5,8 @@ class Search extends Component {
     searchText: "",
   };
 
-  changeSearchText = (e) => {
-    this.setState({ searchText: e.target.value });
+  changeSearchText = (event) => {
+    this.setState({ searchText: event.target.value });
   };
 
   sortContacts = () => {
