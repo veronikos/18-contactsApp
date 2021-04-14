@@ -46,8 +46,9 @@ class Contacts extends Component {
     this.setState({contacts: this.state.contacts
           .sort((a, b) =>
             a.lastName.toLowerCase().startsWith(data) ||
-            a.firstName.toLowerCase().startsWith(data
-            ) ? -1 : a.lastName < b.lastName ? -1 : 1)})
+            a.firstName.toLowerCase().startsWith(data) ||
+            a.phone.includes(data)
+            ? -1 : a.lastName < b.lastName ? -1 : 1)})
   }
 
   handleSearchChange = () => {

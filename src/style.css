@@ -6,7 +6,7 @@
 
 body {
     text-align: center;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Josefin Sans', 'Balsamiq Sans', sans-serif;
 }
 header {
     font-weight: 700;
@@ -76,6 +76,14 @@ button:before {
     color: #3a86ff;
     margin-right: 20px;
     margin-left: 3px;
+}
+
+.anon::before {
+    content: "\f128";
+    font-family: FontAwesome;
+    font-size: 40px;
+    color: #00afb9;
+    margin-right: 13px;
 }
 
 .phone {
