@@ -36,28 +36,29 @@ class Contacts extends Component {
       gender: "male"
     }],
     filteredContacts: [],
-    searchName: ['']
+    search: ['']
   }
 
   addSearchName = data => {
-    this.setState({searchName: this.state.searchName.concat(data)})
+    this.setState({search: data})
    
     const filtered = this.state.contacts
-    .filter((el) =>
-      el.lastName.toLowerCase().startsWith(data.toLowerCase()) ||
-      el.firstName.toLowerCase().startsWith(data.toLowerCase()) ||
-      el.phone.includes(data))  
+    .filter((contact) =>
+      contact.lastName.toLowerCase().startsWith(data.toLowerCase()) ||
+      contact.firstName.toLowerCase().startsWith(data.toLowerCase()) ||
+      contact.phone.includes(data))  
 
       this.setState({filteredContacts: filtered})
-
   }
 
   render() {
 
+    let filteredContacts = this.state.search[0] !== "" ? this.state.filteredContacts : this.state.contacts
+    console.log(this.state.search)
     return (
       <div className="Contacts">
         <Search addSearchName={this.addSearchName} />
-        {this.state.contacts
+        { filteredContacts
           .map((person) => (
             <Person {...person} key={person.index} />
           ))}

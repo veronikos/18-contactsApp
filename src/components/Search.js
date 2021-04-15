@@ -10,12 +10,8 @@ class Search extends Component {
   };
 
   sortContacts = () => {
-    const data = {
-      searchText: this.state.searchText,
-    }
-
     if(this.state.searchText !== '') {
-      this.props.addSearchName(data.searchText)
+      this.props.addSearchName(this.state.searchText)
       this.setState({searchText: ''})
     }
   }
@@ -30,6 +26,12 @@ class Search extends Component {
           onChange={this.changeSearchText}
         />
         <button type="submit" onClick={this.sortContacts}></button>
+        {/* <div>
+          <input type="radio" id="radioButton"></input>
+          <input type="radio" id="radioButton"></input>
+          <input type="radio" id="contactChoice1" name="contact" value="email"></input>
+          <label for="contactChoice1">Email</label>
+        </div> */}
       </div>
     );
   }
