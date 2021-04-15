@@ -3,6 +3,9 @@ import React, { Component } from "react";
 class Search extends Component {
   state = {
     searchText: "",
+    checkFemale: false,
+    checkMale: false,
+    checkOther: false
   };
 
   changeSearchText = (event) => {
@@ -16,22 +19,31 @@ class Search extends Component {
     }
   }
 
+  handleCheckFemale = () => {
+    this.setState({checkFemale: !this.state.checkFemale});
+    this.props.addSearchName(this.state.checkFemale)
+    console.log(this.state.checkFemale)
+  }
+
   render() {
     return (
       <div className="Search">
         <input
+          className="search"
           type="text"
           placeholder="Search contacts..."
           value={this.state.searchText}
           onChange={this.changeSearchText}
         />
-        <button type="submit" onClick={this.sortContacts}></button>
-        {/* <div>
-          <input type="radio" id="radioButton"></input>
-          <input type="radio" id="radioButton"></input>
-          <input type="radio" id="contactChoice1" name="contact" value="email"></input>
-          <label for="contactChoice1">Email</label>
-        </div> */}
+        <button className="searchButton" type="submit" onClick={this.sortContacts}></button>
+        <div className="checkBoxes">
+            <input type="checkbox" id="Female" defaultChecked='true' onChange={this.handleCheck}></input>
+            <label htmlFor="Female" defaultChecked='true' onChange={this.handleCheck}>Female</label>
+            <input type="checkbox" id="Male"></input>
+            <label htmlFor="Male" defaultChecked='true' onChange={this.handleCheck}>Male</label>
+            <input type="checkbox" id="Other"></input>
+            <label htmlFor="Other">Other</label>
+        </div>
       </div>
     );
   }

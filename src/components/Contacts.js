@@ -36,7 +36,8 @@ class Contacts extends Component {
       gender: "male"
     }],
     filteredContacts: [],
-    search: ['']
+    search: [''],
+    showFemale: true,
   }
 
   addSearchName = data => {
@@ -51,13 +52,18 @@ class Contacts extends Component {
       this.setState({filteredContacts: filtered})
   }
 
+  addFilterFemale = data => {
+    this.setState({showFemale: data})
+  }
+
   render() {
 
     let filteredContacts = this.state.search[0] !== "" ? this.state.filteredContacts : this.state.contacts
     console.log(this.state.search)
+
     return (
       <div className="Contacts">
-        <Search addSearchName={this.addSearchName} />
+        <Search addSearchName={this.addSearchName} addFilterFemale={this.addFilterFemale}/>
         { filteredContacts
           .map((person) => (
             <Person {...person} key={person.index} />
