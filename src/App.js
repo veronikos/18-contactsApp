@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.css';
-import './style.css'
+import './App.css'
 import Header from './components/Header';
 import Contacts from "./components/Contacts"
 
