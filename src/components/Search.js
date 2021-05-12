@@ -7,14 +7,8 @@ class Search extends Component {
 
   changeSearchText = (event) => {
     this.setState({ searchText: event.target.value });
+    this.props.addSearchName(this.state.searchText)
   };
-
-  sortContacts = () => {
-    if(this.state.searchText !== '') {
-      this.props.addSearchName(this.state.searchText)
-      this.setState({searchText: ''})
-    }
-  }
 
   render() {
     return (
@@ -25,7 +19,6 @@ class Search extends Component {
           value={this.state.searchText}
           onChange={this.changeSearchText}
         />
-        <button type="submit" onClick={this.sortContacts}></button>
         {/* <div>
           <input type="radio" id="radioButton"></input>
           <input type="radio" id="radioButton"></input>
